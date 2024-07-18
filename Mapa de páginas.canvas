@@ -1,0 +1,17 @@
+{
+	"nodes":[
+		{"id":"6aef2d0f46e0bd3f","x":80,"y":-20,"width":199,"height":60,"type":"text","text":"Página de usuário"},
+		{"id":"7643aab1955d4ba2","x":-380,"y":-100,"width":152,"height":60,"type":"text","text":"Home Page"},
+		{"id":"a5c8ae96ff0a4a22","x":37,"y":-260,"width":242,"height":60,"type":"text","text":"Página de autenticação"},
+		{"id":"3f1bb6ce800f9927","x":320,"y":120,"width":240,"height":60,"type":"text","text":"Catálogo de diagramas"},
+		{"id":"864ac8608b329ff4","x":500,"y":-100,"width":219,"height":60,"type":"text","text":"Editor de diagrama"}
+	],
+	"edges":[
+		{"id":"40356ee7c3364ca5","fromNode":"7643aab1955d4ba2","fromSide":"right","toNode":"a5c8ae96ff0a4a22","toSide":"left","label":"se não estiver logado"},
+		{"id":"cbb2f58d7a4f5e9e","fromNode":"7643aab1955d4ba2","fromSide":"right","toNode":"6aef2d0f46e0bd3f","toSide":"left","label":"se estiver logado"},
+		{"id":"710c46ad732d6f71","fromNode":"6aef2d0f46e0bd3f","fromSide":"right","toNode":"3f1bb6ce800f9927","toSide":"left"},
+		{"id":"d5ebaa2c822fccc3","fromNode":"6aef2d0f46e0bd3f","fromSide":"right","toNode":"864ac8608b329ff4","toSide":"left"},
+		{"id":"8a13dec6073f4267","fromNode":"a5c8ae96ff0a4a22","fromSide":"top","toNode":"7643aab1955d4ba2","toSide":"top","label":"Qnd usuário auntenticar"},
+		{"id":"39b553b9d5b7bd44","fromNode":"3f1bb6ce800f9927","fromSide":"right","toNode":"864ac8608b329ff4","toSide":"bottom","label":"escolhendo um dos diagramas se tiver"}
+	]
+}

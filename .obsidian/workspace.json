@@ -11,11 +11,14 @@
             "id": "9bbfcf687fe38a63",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
+                "file": "Mapa de páginas.canvas",
+                "viewState": {
+                  "x": 169.5,
+                  "y": -40,
+                  "zoom": 0
+                }
               }
             }
           }
@@ -85,7 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Mapa de páginas.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "Mapa de páginas.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +128,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "Mapa de páginas.canvas"
               }
             }
           }
@@ -147,5 +150,8 @@
     }
   },
   "active": "9bbfcf687fe38a63",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "Mapa de páginas.canvas",
+    "README.md"
+  ]
 }
