@@ -11,12 +11,12 @@
             <meta charset="utf-8">
             <link rel="stylesheet" href="styles.css">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>HOME</title>
+            <title>Crie seu mapa mental!!</title>
       </head>
       <body>
 
             <div class="cabecalho">
-                  <h1>Meu Site</h1>
+                  <h1>Mapa Mental</h1>
                   <nav>
                         <ul>
                                <li><a href="#">Olá, <?php echo $_SESSION['nome']; ?></a></li>
@@ -26,12 +26,12 @@
                   </nav>
             </div>
             
-            <div class="conteudo"><!-- Centralizar tudo aq -->
+            <div class="conteudo"> <!-- Centralizar tudo aq -->
                   <h1>Diagrama</h1>
                   <h2>Crie diagramas que o ajudarão á tomar as decisões importantes</h2>
                   <br>
                    
-                  <br><br><br><br>
+                  
                   <h3>  </h3>
                   <a class="botao" href="">Comece a criar!</a>
 

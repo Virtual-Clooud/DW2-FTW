@@ -40,9 +40,12 @@ body {
 }
 
 .conteudo {
-    flex: 1;
-    padding: 70px 20px 20px; /* Adiciona espaço para o cabeçalho fixo */
-    text-align: center; /* CENTRALIZA O CONTEUDO AQUI */
+    padding: 200px 20px 20px 20px; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column;
+
 }
 
 .rodape {
