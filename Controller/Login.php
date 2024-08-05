@@ -20,10 +20,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     $password = validate($_POST['password']);
 
     if (empty($username)) {
-        header("Location: index.php?error=User Name is Required");
+        header("Location: ../view/index.php?error=Nome de usuário não informado, informe o usuário");
         exit();
     } else if (empty($password)) {
-        header("Location: index.php?error=Password is Required");
+        header("Location: ../view/index.php?error=Senha não informada, informe a senha");
         exit();
     }
 
@@ -42,11 +42,11 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             header("Location: ../view/homepage.php");
             exit();
         } else {
-            header("Location: index.php?error=Incorrect Username or Password");
+            header("Location: ../view/index.php?error=Usuario ou Senha incorreto!!");
             exit();
         }
     } else {
-        header("Location: index.php?error=Incorrect Username or Password");
+        header("Location: ../view/index.php?error=Usuario ou Senha incorreto!!");
         exit();
     }
 }

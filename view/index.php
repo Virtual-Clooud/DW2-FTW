@@ -4,7 +4,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles.css">
-	<title></title>
+	
+	<title>LOGIN</title>
 </head>
 <body>
 	<form action="../Controller/Login.php" method="post">
