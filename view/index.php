@@ -7,7 +7,7 @@
 </head>
 <body>
 	<form action="../Controller/Login.php" method="post">
-		<div style=""></div>style="width:800px; margin:0 auto; text-align: center;"
+		<div style="width:800px; margin:0 auto; text-align: center;">
 		<h2>LOGIN</h2>
 		<?php if (isset($_GET['error'])) {?>
 			<p class="error"><?php echo $_GET['error'];?> </p>
@@ -18,7 +18,7 @@
 		<input type="password" name="password" placeholder="password"><br>
 
 		<button type="submit">Login</button>
-		 
+		</div> 
 		
 	</form>
 
