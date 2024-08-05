@@ -1,43 +1,45 @@
-<?php
+<?php 
+      session_start();
 
-session_start();
-
-if (isset($_POST['username'] && isset ($_POST['password']){
-
+      if(isset($_SESSION['id']) && isset($_SESSION['nome'])) {
 
 ?>
 
-
-<!doctype html>
-<html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>homepage</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1>Olá, <?php echo $_SESSION['nome']; ?></h1>
-
-    <div style="width:800px; margin:0 auto; text-align: center;"><!-- Centralizar tudo aq -->
-      <h1>Diagrama</h1>
-      <h2>Crie diagramas que o ajudarão á tomar as decisões importantes</h2>
-
-      <br><br><br><br> <br><br><br><br>
-
-      <h3> Comece a criar! </h3>
-      <button type="button">Click Me!</button>
+<!DOCTYPE html>
+<html>
+      <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>HOME</title>
+      </head>
+      <body>
+            <h3>Olá, <?php echo $_SESSION['nome']; ?></h1>
+            <div style="width:800px; margin:0 auto; text-align: center;"><!-- Centralizar tudo aq -->
+                  <h1>Diagrama</h1>
+                  <h2>Crie diagramas que o ajudarão á tomar as decisões importantes</h2>
+                  <br>
+                  <br>
+                  <br>
+                  <br> 
+                  <br><br><br><br>
+                  <h3> Comece a criar! </h3>
+                  <button type="button">Click Me!</button>
     
     </div>
-
-    <a href="logout.php">Logout</a>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
+
+            <a href="../Controller/logout.php">Logout</a>
+
+      </body>
 </html>
-<?php
-}else{
-  header("Location: index.php");
-  exit();
+
+<?php 
 }
-?>
+else {
+      header('Location: index.php');
+      exit();
+}
+
+
+ ?>
