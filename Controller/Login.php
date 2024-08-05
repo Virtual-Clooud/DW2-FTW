@@ -37,8 +37,22 @@ if(mysqli_num_rows($result) === 1 {
     $row = mysqli_fetch_assoc($result);
     if($row['nome'] === $username && $row['senha'] === $password ){
         echo "Login in ";
+
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['nome'] = $row['nome'];
+        header(../view/homepage.html);
+        exit();
+
+    }
+    else{
+        header("Location: login.html?error=Incorrect Username or Password");
+        exit();
     }
 }
+    else{
+        header("Location: index.php");
+        exit();
+    }
 
 
   
