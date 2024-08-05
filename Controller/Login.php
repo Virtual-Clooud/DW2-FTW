@@ -21,11 +21,11 @@ $username = validate($_POST['username']);
 $password = validate($_POST['password']);
 
 if(empty($username)){
-    header ("Location: login.html?error=User Name is Required");
+    header ("Location: index.php?error=User Name is Required");
     exit();
 
 }else if(empty($password)){
-    header ("Location: login.html?error=Password Name is Required");
+    header ("Location: index.php?error=Password Name is Required");
     exit();
 }
 
@@ -40,12 +40,12 @@ if(mysqli_num_rows($result) === 1 {
 
         $_SESSION['id'] = $row['id'];
         $_SESSION['nome'] = $row['nome'];
-        header(../view/homepage.html);
+        header(../view/homepage.php);
         exit();
 
     }
     else{
-        header("Location: login.html?error=Incorrect Username or Password");
+        header("Location: index.php?error=Incorrect Username or Password");
         exit();
     }
 }
