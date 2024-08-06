@@ -15,12 +15,16 @@
 			<p class="error"><?php echo $_GET['error'];?> </p> 
 		<?php } ?>
 		<label> Usuário </label>
-		<input type="text" name="username" placeholder="Usuário"><br>
+		<input class="inputlogin" type="text" name="username" placeholder="Usuário"><br>
 		<label>Senha</label>
-		<input type="password" name="password" placeholder="Senha"><br>
+		<input class="inputlogin" type="password" name="password" placeholder="Senha"><br>
 
 		<button type="submit">Login</button>
 		</div> 
+		 <div class="rodape">
+                  
+                  
+             </div>
 		
 	</form>
 

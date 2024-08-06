@@ -17,6 +17,7 @@
         <h1>Mapa Mental</h1>
         <nav>
             <ul>
+                <li><a href="#">Olá, <?php echo $_SESSION['nome']; ?></a></li>  
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Objetivos</a></li>
                 <li><a href="#">Perfil</a></li>
@@ -44,7 +45,8 @@
     </div>
 
     <div class="rodape">
-        <p>&copy; 2024 Meu Sistema de Mapas Mentais</p>
+        
+        <a class = "canto" href="../Controller/logout.php">Logout</a>
     </div>
 </body>
 </html>

@@ -52,8 +52,8 @@ margin-left: auto; /* Alinha o botão de logout à direita */
 .conteudo {
     padding: 100px 20px 20px 20px; 
     display: flex;
-/*   justify-content: center; */
-/*    align-items: center; */
+   justify-content: center; 
+    align-items: center; 
     flex-direction: column;
 
 }
@@ -74,9 +74,22 @@ margin-left: auto; /* Alinha o botão de logout à direita */
     width: 100%;
     background-color: #333;
     color: #fff;
-    text-align: center;
+    text-align: right;
     padding: 10px 0;
     box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+}
+
+a.canto {
+   
+    display: inline-block; 
+    padding: 10px 20px; 
+    background-color: #007BFF; 
+    color: #fff; 
+   text-align: center; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease; 
 }
 
 a.botao {
@@ -112,14 +125,22 @@ a.botao {
             color: #555;
         }
 
-        input[type="text"],input[type="password"],
-        textarea {
+        
+        .inputlogin, input[type=text],{
             width: 25%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
 
+        
+        textarea {
+            width: 400px; /* Define a largura do input */
+            height: 100px; /* Define a altura do input, opcional */
+            padding: 10px; /* Adiciona um preenchimento interno */
+            border: 1px solid #ccc; /* Define a borda do input */
+            border-radius: 4px; /* Adiciona bordas arredondadas */
+        }
 
         button {
             display: inline-block;
