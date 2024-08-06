@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 02/08/2024 às 16:01
+-- Tempo de geração: 06/08/2024 às 10:45
 -- Versão do servidor: 8.0.37-0ubuntu0.22.04.3
 -- Versão do PHP: 8.1.2-1ubuntu2.18
 
@@ -29,67 +29,26 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `acoes` (
   `id` int NOT NULL,
-  `mapa_id` int NOT NULL,
-  `mapa_usuario_id` int NOT NULL
+  `objetivo_id` int NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `descricao` text,
+  `vencimento` date DEFAULT NULL,
+  `status` enum('pendente','em progresso','concluída') DEFAULT 'pendente',
+  `criadoEm` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `ambiente`
+-- Estrutura para tabela `objetivo`
 --
 
-CREATE TABLE `ambiente` (
+CREATE TABLE `objetivo` (
   `id` int NOT NULL,
-  `mapa_id` int NOT NULL,
-  `mapa_usuario_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `desejo`
---
-
-CREATE TABLE `desejo` (
-  `id` int NOT NULL,
-  `mapa_id` int NOT NULL,
-  `mapa_usuario_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `feedback`
---
-
-CREATE TABLE `feedback` (
-  `id` int NOT NULL,
-  `mapa_id` int NOT NULL,
-  `mapa_usuario_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `mapa`
---
-
-CREATE TABLE `mapa` (
-  `id` int NOT NULL,
-  `usuario_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `mentalidade`
---
-
-CREATE TABLE `mentalidade` (
-  `id` int NOT NULL,
-  `mapa_id` int NOT NULL,
-  `mapa_usuario_id` int NOT NULL
+  `usuario_id` int NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `descricao` text,
+  `criadoEm` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
@@ -104,17 +63,21 @@ CREATE TABLE `usuario` (
   `senha` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
--- --------------------------------------------------------
-
 --
--- Estrutura para tabela `visual`
+-- Despejando dados para a tabela `usuario`
 --
 
-CREATE TABLE `visual` (
-  `id` int NOT NULL,
-  `mapa_id` int NOT NULL,
-  `mapa_usuario_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+INSERT INTO `usuario` (`id`, `nome`, `senha`) VALUES
+(1, 'Alice', 'senha123'),
+(2, 'Bob', 'senha456'),
+(3, 'Carol', 'senha789'),
+(4, 'David', 'senha012'),
+(5, 'Eve', 'senha345'),
+(6, 'Frank', 'senha678'),
+(7, 'Grace', 'senha901'),
+(8, 'Heidi', 'senha234'),
+(9, 'Ivan', 'senha567'),
+(10, 'Judy', 'senha890');
 
 --
 -- Índices para tabelas despejadas
@@ -125,55 +88,20 @@ CREATE TABLE `visual` (
 --
 ALTER TABLE `acoes`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_acoes_mapa1_idx` (`mapa_id`,`mapa_usuario_id`);
+  ADD KEY `objetivo_id` (`objetivo_id`);
 
 --
--- Índices de tabela `ambiente`
+-- Índices de tabela `objetivo`
 --
-ALTER TABLE `ambiente`
+ALTER TABLE `objetivo`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_ambiente_mapa1_idx` (`mapa_id`,`mapa_usuario_id`);
-
---
--- Índices de tabela `desejo`
---
-ALTER TABLE `desejo`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_desejo_mapa1_idx` (`mapa_id`,`mapa_usuario_id`);
-
---
--- Índices de tabela `feedback`
---
-ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_feedback_mapa1_idx` (`mapa_id`,`mapa_usuario_id`);
-
---
--- Índices de tabela `mapa`
---
-ALTER TABLE `mapa`
-  ADD PRIMARY KEY (`id`,`usuario_id`),
-  ADD KEY `fk_mapa_usuario_idx` (`usuario_id`);
-
---
--- Índices de tabela `mentalidade`
---
-ALTER TABLE `mentalidade`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_mentalidade_mapa1_idx` (`mapa_id`,`mapa_usuario_id`);
+  ADD KEY `usuario_id` (`usuario_id`);
 
 --
 -- Índices de tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `visual`
---
-ALTER TABLE `visual`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_visual_mapa1_idx` (`mapa_id`,`mapa_usuario_id`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
@@ -186,46 +114,16 @@ ALTER TABLE `acoes`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `ambiente`
+-- AUTO_INCREMENT de tabela `objetivo`
 --
-ALTER TABLE `ambiente`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `desejo`
---
-ALTER TABLE `desejo`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `feedback`
---
-ALTER TABLE `feedback`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `mapa`
---
-ALTER TABLE `mapa`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `mentalidade`
---
-ALTER TABLE `mentalidade`
+ALTER TABLE `objetivo`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `visual`
---
-ALTER TABLE `visual`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para tabelas despejadas
@@ -235,43 +133,13 @@ ALTER TABLE `visual`
 -- Restrições para tabelas `acoes`
 --
 ALTER TABLE `acoes`
-  ADD CONSTRAINT `fk_acoes_mapa1` FOREIGN KEY (`mapa_id`,`mapa_usuario_id`) REFERENCES `mapa` (`id`, `usuario_id`);
+  ADD CONSTRAINT `acoes_ibfk_1` FOREIGN KEY (`objetivo_id`) REFERENCES `objetivo` (`id`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `ambiente`
+-- Restrições para tabelas `objetivo`
 --
-ALTER TABLE `ambiente`
-  ADD CONSTRAINT `fk_ambiente_mapa1` FOREIGN KEY (`mapa_id`,`mapa_usuario_id`) REFERENCES `mapa` (`id`, `usuario_id`);
-
---
--- Restrições para tabelas `desejo`
---
-ALTER TABLE `desejo`
-  ADD CONSTRAINT `fk_desejo_mapa1` FOREIGN KEY (`mapa_id`,`mapa_usuario_id`) REFERENCES `mapa` (`id`, `usuario_id`);
-
---
--- Restrições para tabelas `feedback`
---
-ALTER TABLE `feedback`
-  ADD CONSTRAINT `fk_feedback_mapa1` FOREIGN KEY (`mapa_id`,`mapa_usuario_id`) REFERENCES `mapa` (`id`, `usuario_id`);
-
---
--- Restrições para tabelas `mapa`
---
-ALTER TABLE `mapa`
-  ADD CONSTRAINT `fk_mapa_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`);
-
---
--- Restrições para tabelas `mentalidade`
---
-ALTER TABLE `mentalidade`
-  ADD CONSTRAINT `fk_mentalidade_mapa1` FOREIGN KEY (`mapa_id`,`mapa_usuario_id`) REFERENCES `mapa` (`id`, `usuario_id`);
-
---
--- Restrições para tabelas `visual`
---
-ALTER TABLE `visual`
-  ADD CONSTRAINT `fk_visual_mapa1` FOREIGN KEY (`mapa_id`,`mapa_usuario_id`) REFERENCES `mapa` (`id`, `usuario_id`);
+ALTER TABLE `objetivo`
+  ADD CONSTRAINT `objetivo_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
