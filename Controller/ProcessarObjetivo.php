@@ -20,6 +20,7 @@
 	$stmt->execute(['id' => $id, 'titulo' => $titulo,'descricao' => $descricao]);
 
 	if ($stmt->rowCount() === 1) {
+		$objetivoId = $db->lastInsertId();
 ?>
 			<!DOCTYPE html>
 	<html lang="pt-BR">
@@ -58,6 +59,7 @@
 	            <div class="form-group">
 	                <label for="vencimento">Data de Vencimento:</label>
 	                <input type="date" id="vencimento" name="vencimento" required>
+	                <input type="hidden" name="objetivoId" value="<?php echo htmlspecialchars($objetivoId); ?>">
 	            </div>
 	            <div class="form-group">
 	                <label for="status">Status:</label>
