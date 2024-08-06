@@ -13,22 +13,41 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="form-container">
-        <h2>Cadastrar Objetivo</h2>
-        <form action="processar_objetivo.php" method="post">
-            <div class="form-group">
-                <label for="titulo">Título:</label>
-                <input type="text" id="titulo" name="titulo" required>
-            </div>
-
-            <div class="form-group">
-                <label for="descricao">Descrição:</label>
-                <textarea id="descricao" name="descricao" rows="4" required></textarea>
-            </div>
-
-            <button type="submit">Salvar Objetivo</button>
-        </form>
+    <div class="cabecalho">
+        <h1>Mapa Mental</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Objetivos</a></li>
+                <li><a href="#">Perfil</a></li>
+            </ul>
+        </nav>
     </div>
+
+    <div class="conteudo">
+        <div class="form-container">
+            <h2>Cadastrar Objetivo</h2>
+            <form action="../Controller/ProcessarObjetivo.php" method="post">
+                <div class="form-group">
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo" name="titulo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descricao">Descrição:</label>
+                    <textarea id="descricao" name="descricao" rows="4" required></textarea>
+                </div>
+
+                <button type="submit">Salvar Objetivo</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="rodape">
+        <p>&copy; 2024 Meu Sistema de Mapas Mentais</p>
+    </div>
+</body>
+</html>
 
     <?php 
 }

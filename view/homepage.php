@@ -22,6 +22,7 @@
                                <li><a href="#">Olá, <?php echo $_SESSION['nome']; ?></a></li>
                                <li><a href="#">Sobre</a></li>
                                <li><a href="#">Contato</a></li>
+                               <li><a class ="botao logout" href="../Controller/logout.php">Logout</a></li>
                         </ul>
                   </nav>
             </div>
