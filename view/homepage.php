@@ -28,12 +28,12 @@
             
             <div class="conteudo"> <!-- Centralizar tudo aq -->
                   <h1>Diagrama</h1>
-                  <h2>Crie diagramas que o ajudarão á tomar as decisões importantes</h2>
+                  <h2>Crie diagramas que o ajudarão a tomar as decisões importantes</h2>
                   <br>
                    
                   
                   <h3>  </h3>
-                  <a class="botao" href="">Comece a criar!</a>
+                  <a class="botao" href="cadastrarObjetivo.php">Comece a criar!</a>
 
                   
     
