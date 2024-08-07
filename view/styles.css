@@ -18,13 +18,12 @@ body {
     padding: 10px 0;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
     z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */
+    height: 60px; /* Defina a altura do cabeçalho */
 }
 
 .cabecalho logout {
-    
     padding: 20px 20px px px;
 }
-
 
 .cabecalho h1 {
     margin: 0;
@@ -44,27 +43,24 @@ body {
     color: #fff;
     text-decoration: none;
 }
-.logout{
-margin-left: auto; /* Alinha o botão de logout à direita */
 
+.logout {
+    margin-left: auto; /* Alinha o botão de logout à direita */
 }
 
 .conteudo {
     padding: 100px 20px 20px 20px; 
     display: flex;
-   justify-content: center; 
+    justify-content: center; 
     align-items: center; 
     flex-direction: column;
-
 }
 
 .painelLogin {
     padding: 200px 20px 20px 20px; 
     display: flex;
-/*    justify-content: center; */
     align-items: center; 
     flex-direction: column;
-
 }
 
 .rodape {
@@ -80,7 +76,6 @@ margin-left: auto; /* Alinha o botão de logout à direita */
 }
 
 a.canto {
-   
     display: inline-block; 
     padding: 10px 20px; 
     background-color: #007BFF; 
@@ -91,6 +86,7 @@ a.canto {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, transform 0.2s ease; 
 }
+
 .box {
     width: 200px;
     padding: 15px;
@@ -98,6 +94,7 @@ a.canto {
     color: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 a.botao {
     display: inline-block; 
@@ -111,59 +108,55 @@ a.botao {
     transition: background-color 0.3s ease, transform 0.2s ease; 
 }
 
- /* Estilos adicionais para o formulário */
-      /*  .form-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 600px;
-            margin: 100px auto 20px auto; /* Ajuste a margem superior para o espaço do cabeçalho fixo */
-        }*/
+/* Layout das divs em colunas */
+.container {
+    padding-top: 70px; /* Deixe um espaço suficiente para o cabeçalho fixo */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Adicione espaçamento entre as caixas, se necessário */
+}
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+.form-group {
+    margin-bottom: 15px;
+}
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-        }
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
 
-        
-        .inputlogin, input[type=text],{
-            width: 25%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+.inputlogin, input[type=text] {
+    width: 25%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
-        
-        textarea {
-            width: 400px; /* Define a largura do input */
-            height: 100px; /* Define a altura do input, opcional */
-            padding: 10px; /* Adiciona um preenchimento interno */
-            border: 1px solid #ccc; /* Define a borda do input */
-            border-radius: 4px; /* Adiciona bordas arredondadas */
-        }
+textarea {
+    width: 400px; /* Define a largura do input */
+    height: 100px; /* Define a altura do input, opcional */
+    padding: 10px; /* Adiciona um preenchimento interno */
+    border: 1px solid #ccc; /* Define a borda do input */
+    border-radius: 4px; /* Adiciona bordas arredondadas */
+}
 
-        button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
-        button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}

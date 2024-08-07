@@ -35,16 +35,43 @@
   <title></title>
 </head>
 <body>
+  <div class="cabecalho">
+      <h1>Mapa Mental - Cadastrar Ação</h1>
+      <nav>
+      <ul>
+          <li><a href="#">Olá, <?php echo $_SESSION['nome']; ?></a></li>
+          <li><a href="#">Sobre</a></li>
+          <li><a href="#">Contato</a></li>
+
+      </ul>
+    </nav>
+</div>
+
+
     <div class="container">
       <?php foreach ($objAcoes as $objAcao): ?>
         <div class="box">
             <h2><?php echo htmlspecialchars($objAcao['objetivo_titulo']); ?></h2>
-            <p>Email: <?php echo htmlspecialchars($objAcao['acao_titulo']); ?></p>
-            <p>Idade: <?php echo htmlspecialchars($objAcao['objetivo_criadoEm']); ?></p>
+            <p>Acao: <?php echo htmlspecialchars($objAcao['acao_titulo']); ?></p>
+            <p>Data de Criacao: <?php echo htmlspecialchars($objAcao['objetivo_criadoEm']); ?></p>
         </div>
         <?php endforeach; ?>
        
     </div>
+  <div class="cabecalho">
+      <h1>Mapa Mental - Cadastrar Ação</h1>
+      <nav>
+          <ul>
+              <li><a href="#">Olá, <?php echo $_SESSION['nome']; ?></a></li>
+              <li><a href="#">Sobre</a></li>
+              <li><a href="#">Contato</a></li>
+              
+          </ul>
+      </nav>
+  </div>
+  <div class="rodape">
+      <a class = "canto" href="../Controller/logout.php">Logout</a>
+  </div>
 </body>
 </html>
 
