@@ -16,17 +16,14 @@
       <body>
 
             <div class="cabecalho">
-
                   <h1>Mapa Mental</h1>
                   <nav>
                         <ul>
-                               <li><a href="#">Olá, <?php echo $_SESSION['nome']; ?></a></li>
-                               <li><a href="#">Objetivos</a></li>
-                               <li><a href="#">Sobre</a></li>
-                               <li><a href="#">Contato</a></li>
-                               
+                              <li><a href="#">Olá, <?php echo $_SESSION['nome']; ?></a></li>  
+                              <li><a href="#">Home</a></li>
+                              <li><a href="#">Objetivos</a></li>
+                              <li><a href="#">Perfil</a></li>
                         </ul>
-
                   </nav>
             </div>
             

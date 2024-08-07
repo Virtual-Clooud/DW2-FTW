@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-echo 'entrou aqui';
+
 
 include "Conexao.php";
 
@@ -12,7 +12,7 @@ session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['nome'])) {
     $id = $_SESSION['id'];
 
-    // Verifica se os dados do POST estão definidos
+   
     if (isset($_POST['objetivoId']) && isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['vencimento']) && isset($_POST['status'])) {
         $objetivoId = $_POST['objetivoId'];
         $titulo = $_POST['titulo'];
@@ -40,10 +40,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['nome'])) {
         } else {
             echo 'Falha ao inserir';
         }
-    } else {
-        echo 'Dados do POST não definidos';
+
+    	header('Location: ../view/Catalogo.php');
+    } 
+    else {
+        echo 'Dados não definidos';
     }
 } else {
     echo 'Usuário não está logado';
+    header('Location: ../view/index.php');
 }
 ?>
