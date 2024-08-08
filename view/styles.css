@@ -93,6 +93,18 @@ a.canto {
     background-color: #4CAF50;
     color: white;
     border-radius: 8px;
+    text-align: center; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.bigbox {
+    width: 100%;
+    max-width: 600px; /* Define uma largura máxima para manter a caixa gerenciável */
+    min-height: 150px; /* Altura mínima para garantir que a caixa não fique muito pequena */
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 

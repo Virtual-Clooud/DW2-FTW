@@ -12,7 +12,8 @@
 
     $id = $_SESSION['id'];
 
-    $sql = "SELECT objetivo.titulo AS objetivo_titulo, 
+    $sql = "SELECT objetivo.id AS objetivo_id,
+                  objetivo.titulo AS objetivo_titulo, 
                    GROUP_CONCAT(acoes.titulo SEPARATOR ', ') AS acoes_titulos, 
                    objetivo.criadoEm AS objetivo_criadoEm
             FROM objetivo 
@@ -36,10 +37,11 @@
 </head>
 <body>
   <div class="cabecalho">
-      <h1>Mapa Mental - Cadastrar Ação</h1>
+      <h1>Lista de Objetivos</h1>
       <nav>
       <ul>
           <li><a href="#">Olá, <?php echo htmlspecialchars($_SESSION['nome']); ?></a></li>
+          <li><a href="homepage.php">Home</a></li>
           <li><a href="#">Sobre</a></li>
           <li><a href="#">Contato</a></li>
       </ul>
@@ -50,8 +52,13 @@
     <?php foreach ($objAcoes as $objAcao): ?>
       <div class="box">
           <h2><?php echo htmlspecialchars($objAcao['objetivo_titulo']); ?></h2>
-          <p>Ação(s): <?php echo htmlspecialchars($objAcao['acoes_titulos'] ?? 'Nenhuma ação'); ?></p>
+          <p>Ação(s):<br> <?php echo htmlspecialchars($objAcao['acoes_titulos'] ?? 'Nenhuma ação'); ?></p>
           <p>Data de Criação: <?php echo htmlspecialchars($objAcao['objetivo_criadoEm']); ?></p>
+          
+          <form action="ObjetivoDetalhado.php" method="post">
+               <input type="hidden" name="info" value="<?php echo htmlspecialchars($objAcao['objetivo_id']); ?>">
+              <button type="submit" class="botao">Detalhes</button>
+          </form>
       </div>
     <?php endforeach; ?>
   </div>
