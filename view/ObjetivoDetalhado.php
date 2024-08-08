@@ -11,6 +11,8 @@
   if(isset($_SESSION['id']) && isset($_SESSION['nome'])) {
 
     $id = $_SESSION['id'];
+    $idobjetivo = $_POST['info'];
+
 
     $sql = "SELECT objetivo.descricao AS objetivo_descricao,
     				 objetivo.id AS objetivo_id,
@@ -19,11 +21,11 @@
                    objetivo.criadoEm AS objetivo_criadoEm
             FROM objetivo 
             INNER JOIN acoes ON objetivo.id = acoes.objetivo_id
-            WHERE objetivo.usuario_id = :id  
+            WHERE objetivo.id = :idobjetivo  
             GROUP BY objetivo.id, objetivo.titulo, objetivo.criadoEm";
 
     $stmt = $db->prepare($sql); // Use a variável $db do arquivo de conexão
-    $stmt->execute(['id' => $id]);
+    $stmt->execute(['idobjetivo' => $idobjetivo]);
 
     $objAcoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -55,12 +57,15 @@
     <?php foreach ($objAcoes as $objAcao): ?>
       <div class="bigbox">
           <h2><?php echo htmlspecialchars($objAcao['objetivo_descricao']); ?></h2>
-          <p>Ação(s):<br> <?php echo nl2br(htmlspecialchars($objAcao['acoes_info'] ?? 'Nenhuma ação')); ?><br></p>
+          <p>
+          	Ação(s):<br> <?php echo nl2br(htmlspecialchars($objAcao['acoes_info'] ?? 'Nenhuma ação')); ?><br>
+
+          </p>
           <p>Data de Criação: <?php echo htmlspecialchars($objAcao['objetivo_criadoEm']); ?></p>
           
           <form action="ObjetivoDetalhado.php" method="post">
                <input type="hidden" name="info" value="<?php echo htmlspecialchars($objAcao['objetivo_id']); ?>">
-              <button type="submit" class="botao">Detalhes</button>
+              <button type="submit" class="botao">Objetivo completo</button>
           </form>
       </div>
     <?php endforeach; ?>
