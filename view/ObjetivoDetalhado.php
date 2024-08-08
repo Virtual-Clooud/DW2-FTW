@@ -1,5 +1,4 @@
 <?php 
-
   ini_set('display_errors', 1);
   ini_set('display_startup_errors', 1);
   error_reporting(E_ALL);
@@ -13,11 +12,10 @@
     $id = $_SESSION['id'];
     $idobjetivo = $_POST['info'];
 
-
     $sql = "SELECT objetivo.descricao AS objetivo_descricao,
-    				 objetivo.id AS objetivo_id,
-                  objetivo.titulo AS objetivo_titulo, 
-                   GROUP_CONCAT(CONCAT(acoes.id,' ',acoes.titulo, ': Vencimento em : ', acoes.vencimento, ': Status: ',acoes.status) SEPARATOR '\n 	') AS acoes_info,
+                   objetivo.id AS objetivo_id,
+                   objetivo.titulo AS objetivo_titulo, 
+                   GROUP_CONCAT(CONCAT(acoes.id,' ',acoes.titulo, ': Vencimento em : ', acoes.vencimento, ': Status: ', acoes.status) SEPARATOR '\n\t') AS acoes_info,
                    objetivo.criadoEm AS objetivo_criadoEm
             FROM objetivo 
             INNER JOIN acoes ON objetivo.id = acoes.objetivo_id
@@ -41,8 +39,8 @@
 <body>
   <div class="cabecalho">
       <h1><?php foreach ($objAcoes as $objAcao): 
-      			echo htmlspecialchars($objAcao['objetivo_titulo']);
-			 endforeach; ?></h1>
+                echo htmlspecialchars($objAcao['objetivo_titulo']);
+              endforeach; ?></h1>
       <nav>
       <ul>
           <li><a href="#">Olá, <?php echo htmlspecialchars($_SESSION['nome']); ?></a></li>
@@ -54,23 +52,41 @@
   </div>
 
   <div class="container">
-  	<form action="" method="POST">
+    <form action="../Controller/UpdateStatus.php" method="POST">
     <?php foreach ($objAcoes as $objAcao): ?>
       <div class="bigbox">
           <h2><?php echo htmlspecialchars($objAcao['objetivo_descricao']); ?></h2>
           <p>
-          	Ação(s):<br> <?php echo nl2br(htmlspecialchars($objAcao['acoes_info'] ?? 'Nenhuma ação')); ?><br>
-          
+          	Ação(s):<br>
+            <?php 
+              
+              $acoes = explode("\n\t", $objAcao['acoes_info'] ?? 'Nenhuma ação');
+              foreach ($acoes as $acao) {
+                  // Divide cada ação para extrair o id
+                  list($acao_id, $acao_texto) = explode(' ', $acao, 2);
+                  echo '<label><input type="checkbox" name="acoes[]" value="' . htmlspecialchars($acao_id) . '"> ' . htmlspecialchars($acao_texto) . '</label><br>';
+              }
+            ?>
           </p>
           <p>Data de Criação: <?php echo htmlspecialchars($objAcao['objetivo_criadoEm']); ?></p>
-              <input type="hidden" name="info" value="<?php echo htmlspecialchars($objAcao['objetivo_id']); ?>">
-              <button type="submit" class="botao">Objetivo completo</button>
-      	</div>
+          <input type="hidden" name="objetivo_id" value="<?php echo htmlspecialchars($objAcao['objetivo_id']); ?>">
+          
+          <!-- Dropdown para status -->
+          <label for="status">Alterar Status:</label>
+          <select id="status" name="status">
+              <option value="pendente">Pendente</option>
+              <option value="concluida">Concluída</option>
+              <option value="em progresso">Em Progresso</option>
+          </select>
+          
+          <button type="submit" class="botao">Atualizar Status</button>
+      </div>
     <?php endforeach; ?>
-	</form>
-	<?php if (isset($_GET['error'])) {?>
-			<p class="msg"><?php echo $_GET['msg'];?> </p> 
-	<?php } ?>
+    </form>
+    
+    <?php if (isset($_GET['msg'])) {?>
+        <p class="msg"><?php echo $_GET['msg'];?> </p> 
+    <?php } ?>
   </div>
 
   <div class="rodape">
