@@ -98,7 +98,7 @@ a.canto {
 }
 .bigbox {
     width: 100%;
-    max-width: 600px; /* Define uma largura máxima para manter a caixa gerenciável */
+    max-width: 800px; /* Define uma largura máxima para manter a caixa gerenciável */
     min-height: 150px; /* Altura mínima para garantir que a caixa não fique muito pequena */
     padding: 10px;
     background-color: #4CAF50;

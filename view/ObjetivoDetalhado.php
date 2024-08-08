@@ -17,7 +17,7 @@
     $sql = "SELECT objetivo.descricao AS objetivo_descricao,
     				 objetivo.id AS objetivo_id,
                   objetivo.titulo AS objetivo_titulo, 
-                   GROUP_CONCAT(CONCAT(acoes.titulo, ': Vencimento em : ', acoes.vencimento) SEPARATOR '\n 	') AS acoes_info,
+                   GROUP_CONCAT(CONCAT(acoes.id,' ',acoes.titulo, ': Vencimento em : ', acoes.vencimento, ': Status: ',acoes.status) SEPARATOR '\n 	') AS acoes_info,
                    objetivo.criadoEm AS objetivo_criadoEm
             FROM objetivo 
             INNER JOIN acoes ON objetivo.id = acoes.objetivo_id
@@ -54,21 +54,23 @@
   </div>
 
   <div class="container">
+  	<form action="" method="POST">
     <?php foreach ($objAcoes as $objAcao): ?>
       <div class="bigbox">
           <h2><?php echo htmlspecialchars($objAcao['objetivo_descricao']); ?></h2>
           <p>
           	Ação(s):<br> <?php echo nl2br(htmlspecialchars($objAcao['acoes_info'] ?? 'Nenhuma ação')); ?><br>
-
+          
           </p>
           <p>Data de Criação: <?php echo htmlspecialchars($objAcao['objetivo_criadoEm']); ?></p>
-          
-          <form action="ObjetivoDetalhado.php" method="post">
-               <input type="hidden" name="info" value="<?php echo htmlspecialchars($objAcao['objetivo_id']); ?>">
+              <input type="hidden" name="info" value="<?php echo htmlspecialchars($objAcao['objetivo_id']); ?>">
               <button type="submit" class="botao">Objetivo completo</button>
-          </form>
-      </div>
+      	</div>
     <?php endforeach; ?>
+	</form>
+	<?php if (isset($_GET['error'])) {?>
+			<p class="msg"><?php echo $_GET['msg'];?> </p> 
+	<?php } ?>
   </div>
 
   <div class="rodape">
