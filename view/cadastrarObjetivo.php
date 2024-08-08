@@ -19,7 +19,7 @@
             <ul>
                 <li><a href="#">Olá, <?php echo $_SESSION['nome']; ?></a></li>  
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Objetivos</a></li>
+                <li><a href="Catalogo.php">Objetivos</a></li>
                 <li><a href="#">Perfil</a></li>
             </ul>
         </nav>
