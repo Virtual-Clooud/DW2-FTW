@@ -8,22 +8,22 @@
 
   session_start();
 
-    if(isset($_SESSION['id']) && isset($_SESSION['nome'])) {
+  if(isset($_SESSION['id']) && isset($_SESSION['nome'])) {
 
-      $id = $_SESSION['id'];
+    $id = $_SESSION['id'];
 
-      $sql = "SELECT objetivo.titulo AS objetivo_titulo, 
-                  acoes.titulo AS acao_titulo, 
-                  objetivo.criadoEm AS objetivo_criadoEm
-                  FROM objetivo INNER JOIN acoes
-                  ON objetivo.id = acoes.objetivo_id
-                  WHERE objetivo.usuario_id = :id  ";
-     
-      $stmt = $db->prepare($sql); // Use a variável $db do arquivo de conexão
-      $stmt->execute(['id' => $id]);
+    $sql = "SELECT objetivo.titulo AS objetivo_titulo, 
+                   GROUP_CONCAT(acoes.titulo SEPARATOR ', ') AS acoes_titulos, 
+                   objetivo.criadoEm AS objetivo_criadoEm
+            FROM objetivo 
+            INNER JOIN acoes ON objetivo.id = acoes.objetivo_id
+            WHERE objetivo.usuario_id = :id  
+            GROUP BY objetivo.id, objetivo.titulo, objetivo.criadoEm";
 
-      $objAcoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $db->prepare($sql); // Use a variável $db do arquivo de conexão
+    $stmt->execute(['id' => $id]);
 
+    $objAcoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -32,55 +32,39 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
-  <title></title>
+  <title>Catálogo de Objetivos</title>
 </head>
 <body>
   <div class="cabecalho">
       <h1>Mapa Mental - Cadastrar Ação</h1>
       <nav>
       <ul>
-          <li><a href="#">Olá, <?php echo $_SESSION['nome']; ?></a></li>
+          <li><a href="#">Olá, <?php echo htmlspecialchars($_SESSION['nome']); ?></a></li>
           <li><a href="#">Sobre</a></li>
           <li><a href="#">Contato</a></li>
-
       </ul>
     </nav>
-</div>
-
-
-    <div class="container">
-      <?php foreach ($objAcoes as $objAcao): ?>
-        <div class="box">
-            <h2><?php echo htmlspecialchars($objAcao['objetivo_titulo']); ?></h2>
-            <p>Acao: <?php echo htmlspecialchars($objAcao['acao_titulo']); ?></p>
-            <p>Data de Criacao: <?php echo htmlspecialchars($objAcao['objetivo_criadoEm']); ?></p>
-        </div>
-        <?php endforeach; ?>
-       
-    </div>
-  <div class="cabecalho">
-      <h1>Mapa Mental - Cadastrar Ação</h1>
-      <nav>
-          <ul>
-              <li><a href="#">Olá, <?php echo $_SESSION['nome']; ?></a></li>
-              <li><a href="#">Sobre</a></li>
-              <li><a href="#">Contato</a></li>
-              
-          </ul>
-      </nav>
   </div>
+
+  <div class="container">
+    <?php foreach ($objAcoes as $objAcao): ?>
+      <div class="box">
+          <h2><?php echo htmlspecialchars($objAcao['objetivo_titulo']); ?></h2>
+          <p>Ação(s): <?php echo htmlspecialchars($objAcao['acoes_titulos'] ?? 'Nenhuma ação'); ?></p>
+          <p>Data de Criação: <?php echo htmlspecialchars($objAcao['objetivo_criadoEm']); ?></p>
+      </div>
+    <?php endforeach; ?>
+  </div>
+
   <div class="rodape">
-      <a class = "canto" href="../Controller/logout.php">Logout</a>
+      <a class="canto" href="../Controller/logout.php">Logout</a>
   </div>
 </body>
 </html>
 
 <?php
-  }else{
+  } else {
     header('Location: index.php');
-      exit();
-
+    exit();
   }
-
 ?>
-
